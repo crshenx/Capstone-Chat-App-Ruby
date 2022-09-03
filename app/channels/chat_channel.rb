@@ -3,7 +3,11 @@ class ChatChannel < ApplicationCable::Channel
       stream_from "chat_#{params[:room]}"  
     end
 
-    def recieve(data)
-        ActionCable.server.broadcast("chat#{params:rooms}")
+    def receive(data)
+        ActionCable.server.broadcast("chat_#{params[:room]}", data)
+    end
+
+    def customevent(data)
+        ActionCable.server.broadcast("chat_#{params[:rooms]}", data)
     end
 end
