@@ -12,9 +12,13 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create(name: params["room"]["name"])
+    @room = Room.create(room_params)
     render :json { room: @room }, status: :created
     ActionCable.server.broadcast('rooms',{rooms: Rooms.public_rooms })
     render :json {room: @room}, status: :created
   end
+
+  private 
+    def room_params
+      params.require(:room).permit(:name,:is_private)
 end
