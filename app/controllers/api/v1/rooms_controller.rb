@@ -14,9 +14,6 @@ class Api::V1::RoomsController < ApplicationController
   def create
     @room = Room.create(name: params["room"]["name"])
     render :json { room: @room }, status: :created
-  end
-
-  def public_rooms
-    
+    ActionCable.server.broadcast('rooms',{rooms: Rooms.public_rooms })
   end
 end
