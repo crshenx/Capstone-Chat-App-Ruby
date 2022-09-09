@@ -1,15 +1,18 @@
 class RoomsChannel < ApplicationCable::Channel
-  def subscribed
-    stream_from "rooms"  
-  end
-    # def createparams
-    #   Rooms.create(room_params)
+  
+    def subscribed
+      stream_from "rooms"  
+    end
 
-    #   ActionCable.server.broadcast(rooms,)
-    # end
+    def createparams
+      Rooms.create(room_params)
 
-    # private
+      ActionCable.server.broadcast(rooms,)
+    end
 
-    #   def room_params()
-    #     params.require(:room).permit(:name, :is_private)
+    private
+
+      def room_params()
+        params.require(:room).permit(:name, :is_private)
+      end
 end
