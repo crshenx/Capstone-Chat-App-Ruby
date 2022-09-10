@@ -5,7 +5,7 @@ class Api::V1::RoomsController < ApplicationController
       @current_user = current_user
     # redirect_to '/login' unless @current_user
       @rooms = Room.public_rooms
-      @users = User.all_except(@current_user)
+      render json: {rooms: @rooms}
     else
       render json: { message: 'Invalid username or password' }, status: :unauthorized
     end
