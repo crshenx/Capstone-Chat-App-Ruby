@@ -4,7 +4,8 @@ class ChatChannel < ApplicationCable::Channel
     end
 
     def receive(data)
-        ActionCable.server.broadcast("chat_#{params[:room]}", data)
+        @message = Message.create(user_id: @current_user, room_id:params[:room], content:data[:content])
+        ActionCable.server.broadcast("chat_#{params[:room]}", @message)
     end
 
     def customevent(data)
