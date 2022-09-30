@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
+  # adding macro for active storage
+  # has_one_attached :picture
 
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
