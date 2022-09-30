@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :avatar_images
   namespace :api do
     namespace :v1 do
       resources :messages

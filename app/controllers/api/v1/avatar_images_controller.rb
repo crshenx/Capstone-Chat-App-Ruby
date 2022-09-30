@@ -1,0 +1,2 @@
+class AvatarImagesController < ApplicationController
+end
