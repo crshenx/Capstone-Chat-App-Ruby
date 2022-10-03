@@ -1,7 +1,5 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-  # adding macro for active storage
-  # has_one_attached :picture
 
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -17,11 +15,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  #tried making a patch to attach the pic
+  def attach
+   
+    current_user.picture.attach(params[:picture])
+    render json: current_user, status: :created
 
-  # def update
-  #   user.picture.attach(params[:picture])
-  # end
+    # if current_user.picture.attached?
+    # else
+    #   render json: { error: 'picture not uploaded'}, status: :unprocessable_entity
+    # end
+  end
   
 
   private
