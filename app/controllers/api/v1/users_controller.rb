@@ -16,8 +16,23 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def attach
-   
-    current_user.picture.attach(params[:picture])
+    args = params[:picture].split(',')
+    file_type = args.split(':')[1]
+    contents = args[1]
+    puts(file_type)
+    blob =  ActiveStorage::Blob.create_and_upload!(
+      io: StringIO.new(Base64.decode64(contents)),
+      filename: "user.png",
+      content_type: file_type
+    )
+    
+
+    
+    
+
+    # puts blob.class
+
+    current_user.picture.attach(blob)
     render json: current_user, status: :created
 
     # if current_user.picture.attached?

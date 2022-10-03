@@ -52,3 +52,5 @@ gem "active_model_serializers", "~> 0.10.13"
 gem "jwt", "~> 2.5"
 
 gem "faker", "~> 2.22"
+
+gem "activesupport" 
