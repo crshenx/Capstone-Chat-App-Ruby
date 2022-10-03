@@ -17,9 +17,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  #tried making a patch to attach the pic
+
+  # def update
+  #   user.picture.attach(params[:picture])
+  # end
   
 
   private
+
+  #maybe need to add picture to permit 
 
     def user_params
       params.require(:user).permit(:username, :password, :bio, :avatar)

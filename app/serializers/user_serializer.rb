@@ -1,3 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :username, :avatar, :bio
+  # may need to add :picture symbol for response
+  attributes :username, :avatar, :bio, :avatar
 end
