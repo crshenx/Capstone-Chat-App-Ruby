@@ -33,6 +33,7 @@ class Api::V1::UsersController < ApplicationController
     # puts blob.class
 
     current_user.picture.attach(blob)
+    
     render json: current_user, status: :created
 
     # if current_user.picture.attached?
