@@ -17,13 +17,14 @@ class Api::V1::UsersController < ApplicationController
 
   def attach
     args = params[:picture].split(',')
-    file_type = args.split(':')[1]
+    content_type = args.split(';')[1].split(':')[1]
+    file_ext = content_type.split("/")[1]
     contents = args[1]
     puts(file_type)
     blob =  ActiveStorage::Blob.create_and_upload!(
       io: StringIO.new(Base64.decode64(contents)),
-      filename: "user." + file_type.split('/')[1],
-      content_type: file_type
+      filename: "user." + file_ext,
+      content_type: content_type
     )
     
 
