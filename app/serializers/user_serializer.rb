@@ -1,11 +1,11 @@
 class UserSerializer < ActiveModel::Serializer
   # may need to add :picture symbol for response
-  attributes :username, :avatar, :bio,  :picture
+  attributes :username, :avatar, :bio,
 
 
 
   def picture
-    rails_blob_path(object.picture, only_path: true) if object.picture.attached?
+    Rails.application.routes.url_helpers.rails_blob_path(object.picture, only_path: true)
   end
 
 end

@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
     puts(file_type)
     blob =  ActiveStorage::Blob.create_and_upload!(
       io: StringIO.new(Base64.decode64(contents)),
-      filename: "user.png",
+      filename: "user." + file_type.split('/')[1],
       content_type: file_type
     )
     
