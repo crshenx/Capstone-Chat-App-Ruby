@@ -6,7 +6,9 @@ class UserSerializer < ActiveModel::Serializer
 
 
   def picture
-    rails_blob_url(object.picture, only_path:true) if object.picture.attached?
+    # variant = object.picture.variant(resize:"100x100")
+    # return rails_representation_url(variant, only_path: true)
+    rails_blob_url(object.picture, only_path: true)
   end
 
 end
