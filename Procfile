@@ -1,1 +1,1 @@
-web: bundle exec rails s -p $PORT
+web: rails s -p $PORT
