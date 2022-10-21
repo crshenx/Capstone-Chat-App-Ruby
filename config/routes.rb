@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       post '/rooms', to: 'rooms#create'
       post '/attach', to: 'users#attach'
       # I am adding this although we may not need with consumer creation
-      # mount ActionCable.server => '/cable'
+      mount ActionCable.server => '/cable'
     end
   end
 end
