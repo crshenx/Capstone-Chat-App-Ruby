@@ -36,7 +36,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   config.action_cable.mount_path = "/cable"
   config.action_cable.url = "wss://capstonechatapp.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = [ "https://capstonechatapp.herokuapp.com", /http:\/\/capstonechatapp.herokuapp.com.*/ ]
+  config.action_cable.allowed_request_origins = [ "https://capchatapp.herokuapp.com", /http:\/\/capchatapp.herokuapp.com.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
