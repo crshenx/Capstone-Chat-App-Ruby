@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://:p1f6c04288d8809b39ed7e167f2871e115d54cdd702e93ecdf12b21ca49e31dfc@ec2-34-204-22-163.compute-1.amazonaws.com:12929" } %>
+  url: <%= ENV.fetch("REDIS_URL")  %>
   channel_prefix: slack_clone_backend_production
