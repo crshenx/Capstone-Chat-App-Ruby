@@ -56,3 +56,5 @@ gem "faker", "~> 2.22"
 gem "activesupport" 
 
 gem "ruby-vips"
+
+gem 'aws-sdk-s3'
