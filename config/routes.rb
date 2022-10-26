@@ -11,9 +11,9 @@ Rails.application.routes.draw do
       post '/attach', to: 'users#attach'
       # I am adding this although we may not need with consumer creation
       mount ActionCable.server => '/cable'
+      get '*path',
+      to: 'fallback#index',
+      constraints: ->(req) { !req.xhr? && req.format.html? }
     end
   end
-  get '*path',
-  to: 'fallback#index',
-  constraints: ->(req) { !req.xhr? && req.format.html? }
 end
