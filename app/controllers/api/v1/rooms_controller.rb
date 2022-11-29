@@ -17,6 +17,12 @@ class Api::V1::RoomsController < ApplicationController
     render json: {room: @room}, status: :created
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    render json:  @room, status: :no_content
+  end
+
   private 
     def room_params
       params.require(:room).permit(:name,:is_private)
