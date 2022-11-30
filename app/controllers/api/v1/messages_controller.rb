@@ -11,4 +11,11 @@ class Api::V1::MessagesController < ApplicationController
         @messages = Message.where(room_id:params[:roomID])
        render json: @messages
     end
+
+    def destroy
+        @message = Message.find(params[:id])
+        @message.destroy
+        #  only destroy if the user is the creator of the message        
+        render json: @message, status: :no_content
+    end
 end

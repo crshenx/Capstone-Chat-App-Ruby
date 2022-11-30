@@ -57,4 +57,4 @@ gem "activesupport"
 
 gem "ruby-vips"
 
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3', require: false
