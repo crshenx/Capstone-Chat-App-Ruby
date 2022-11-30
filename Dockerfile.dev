@@ -1,0 +1,17 @@
+FROM ruby:2.7
+
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client libglib2.0-0 libglib2.0-dev libpoppler-glib8 libheif-dev libvips-dev libvips
+WORKDIR /app
+COPY ./Gemfile .
+COPY ./Gemfile.lock .   
+RUN bundle install
+
+#add script as entrypoint (everytime container has started entry point is ran)
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+COPY . .
+ENTRYPOINT [ "entrypoint.sh" ]
+#might not be needed for compose
+EXPOSE 3000
+
+CMD [ "rails", "s", "-b", "0.0.0.0" ]
